@@ -34,3 +34,17 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+build/
+.next/
+.venv/
+venv/
+__pycache__/
+*.log
+.env
+.env.*
+!.env.example
+.claude/
+.qodo/
+ios/Pods/
+android/build/
+android/.gradle/
