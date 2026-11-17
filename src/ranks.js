@@ -88,6 +88,7 @@ export const FREQUENCIES = [
   { value: "daily", label: "Jour", factor: 260, hint: "Par jour, sur 260 jours travaillés par an" },
   { value: "weekly", label: "Semaine", factor: 52, hint: "Par semaine, sur 52 semaines par an" },
   { value: "monthly", label: "Mois", factor: 12, hint: "Par mois, sur 12 mois par an" },
+  { value: "yearly", label: "An", factor: 1, hint: "Par an : ton salaire annuel brut" },
 ];
 
 export const CURRENCIES = [

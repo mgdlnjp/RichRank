@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: 12,
+    paddingHorizontal: 8,
   },
   segmentCompact: { flex: 0, minWidth: 48 },
   selected: {
