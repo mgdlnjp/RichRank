@@ -1,0 +1,562 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T18:35:12+00:00",
+  "title": "Design System: RichRank",
+  "extensions": {
+    "colorMeta": {
+      "electric-violet": {
+        "role": "primary",
+        "displayName": "Electric Violet",
+        "canonical": "#6C3BFF",
+        "tonalRamp": [
+          "#0D0035",
+          "#280078",
+          "#4400B6",
+          "#5F25EB",
+          "#7C55FF",
+          "#9B85FF",
+          "#BEB5FF",
+          "#E6E5FF"
+        ]
+      },
+      "violet-glow": {
+        "role": "primary",
+        "displayName": "Violet Glow",
+        "canonical": "#9A7BFF",
+        "tonalRamp": [
+          "#0E0228",
+          "#2A0B5E",
+          "#482392",
+          "#6742C0",
+          "#8767E7",
+          "#A78FFF",
+          "#CAB9FF",
+          "#EEE6FF"
+        ]
+      },
+      "bubblegum-pink": {
+        "role": "secondary",
+        "displayName": "Bubblegum Pink",
+        "canonical": "#FF5FA2",
+        "tonalRamp": [
+          "#22000B",
+          "#520025",
+          "#830042",
+          "#B00161",
+          "#D93C83",
+          "#FA6DA5",
+          "#FFA0C9",
+          "#FFD8EE"
+        ]
+      },
+      "sunflower": {
+        "role": "secondary",
+        "displayName": "Sunflower",
+        "canonical": "#FFD23F",
+        "tonalRamp": [
+          "#150800",
+          "#391F00",
+          "#5E3A00",
+          "#835900",
+          "#A67C00",
+          "#C7A012",
+          "#E5C76F",
+          "#FFEEBD"
+        ]
+      },
+      "deep-ink": {
+        "role": "neutral",
+        "displayName": "Deep Ink",
+        "canonical": "#1B1B3A",
+        "tonalRamp": [
+          "#090A15",
+          "#222338",
+          "#3D3F5D",
+          "#5B5E82",
+          "#7C7FA5",
+          "#9FA2C6",
+          "#C4C7E4",
+          "#EBEDFF"
+        ]
+      },
+      "lavender-paper": {
+        "role": "neutral",
+        "displayName": "Lavender Paper",
+        "canonical": "#F7F4FF",
+        "tonalRamp": [
+          "#0B0B0D",
+          "#26242A",
+          "#434148",
+          "#626069",
+          "#83818A",
+          "#A6A3AC",
+          "#CAC8CF",
+          "#EFEEF2"
+        ]
+      },
+      "card-stock": {
+        "role": "neutral",
+        "displayName": "Card Stock",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#A5A5A5",
+          "#C9C9C9",
+          "#EEEEEE"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "canonical": "rgba(27, 27, 58, 0.68)"
+      },
+      "ink-hairline": {
+        "role": "neutral",
+        "displayName": "Ink Hairline",
+        "canonical": "rgba(27, 27, 58, 0.12)"
+      },
+      "violet-wash": {
+        "role": "neutral",
+        "displayName": "Violet Wash",
+        "canonical": "rgba(108, 59, 255, 0.10)"
+      },
+      "violet-shade": {
+        "role": "neutral",
+        "displayName": "Violet Shade",
+        "canonical": "#4B2BB8",
+        "tonalRamp": [
+          "#0B012C",
+          "#240966",
+          "#3E229C",
+          "#5B43CD",
+          "#7968F4",
+          "#9A91FF",
+          "#BEBCFF",
+          "#E7E8FF"
+        ]
+      },
+      "night-ground": {
+        "role": "neutral",
+        "displayName": "Night Ground",
+        "canonical": "#12112A",
+        "tonalRamp": [
+          "#0A0A13",
+          "#222335",
+          "#3E3F59",
+          "#5D5E7D",
+          "#7E7F9F",
+          "#A0A2C0",
+          "#C5C7E0",
+          "#ECEDFC"
+        ]
+      },
+      "night-stock": {
+        "role": "neutral",
+        "displayName": "Night Stock",
+        "canonical": "#1F1D44",
+        "tonalRamp": [
+          "#090917",
+          "#22223C",
+          "#3D3D63",
+          "#5B5C88",
+          "#7C7DAC",
+          "#9EA1CC",
+          "#C4C6E9",
+          "#EBEDFF"
+        ]
+      },
+      "night-card": {
+        "role": "neutral",
+        "displayName": "Night Card",
+        "canonical": "#0B0A1F",
+        "tonalRamp": [
+          "#0A0A12",
+          "#232333",
+          "#3F4056",
+          "#5D5E79",
+          "#7E809C",
+          "#A1A3BD",
+          "#C6C7DD",
+          "#ECEDFA"
+        ]
+      },
+      "foil-common": {
+        "role": "tertiary",
+        "displayName": "Pewter Lilac",
+        "canonical": "#D9D4F2",
+        "tonalRamp": [
+          "#0B0A12",
+          "#252232",
+          "#433E54",
+          "#625D77",
+          "#837E99",
+          "#A5A1BB",
+          "#C9C6DB",
+          "#EFEDF9"
+        ]
+      },
+      "foil-common-deep": {
+        "role": "tertiary",
+        "displayName": "Pewter Lilac Deep",
+        "canonical": "#A69FD1",
+        "tonalRamp": [
+          "#0B0917",
+          "#25203C",
+          "#423C62",
+          "#615A87",
+          "#827BAA",
+          "#A59ECB",
+          "#C9C4E8",
+          "#EEECFF"
+        ]
+      },
+      "foil-uncommon": {
+        "role": "tertiary",
+        "displayName": "Mint Ticket",
+        "canonical": "#7CF0BF",
+        "tonalRamp": [
+          "#001106",
+          "#003119",
+          "#005331",
+          "#00764D",
+          "#10996E",
+          "#56BB92",
+          "#91DCBA",
+          "#D0FAE5"
+        ]
+      },
+      "foil-uncommon-deep": {
+        "role": "tertiary",
+        "displayName": "Mint Ticket Deep",
+        "canonical": "#1FB57A",
+        "tonalRamp": [
+          "#001203",
+          "#003312",
+          "#005528",
+          "#007943",
+          "#009C63",
+          "#4ABE89",
+          "#8BDEB2",
+          "#CCFCE1"
+        ]
+      },
+      "foil-rare": {
+        "role": "tertiary",
+        "displayName": "Pool Blue",
+        "canonical": "#7DB6FF",
+        "tonalRamp": [
+          "#000B1F",
+          "#01244D",
+          "#11427A",
+          "#2C62A3",
+          "#4E84C9",
+          "#76A8E8",
+          "#A4CCFF",
+          "#D9F1FF"
+        ]
+      },
+      "foil-rare-deep": {
+        "role": "tertiary",
+        "displayName": "Pool Blue Deep",
+        "canonical": "#2B6BFF",
+        "tonalRamp": [
+          "#000331",
+          "#001071",
+          "#002CAC",
+          "#124EDF",
+          "#3475FF",
+          "#5F9DFF",
+          "#92C7FF",
+          "#CEEFFF"
+        ]
+      },
+      "foil-epic": {
+        "role": "tertiary",
+        "displayName": "Amethyst",
+        "canonical": "#B9A2FF",
+        "tonalRamp": [
+          "#0D051F",
+          "#29184C",
+          "#473179",
+          "#674FA3",
+          "#8871C8",
+          "#AA96E7",
+          "#CCBEFF",
+          "#F0E8FF"
+        ]
+      },
+      "foil-legendary": {
+        "role": "tertiary",
+        "displayName": "Gold Leaf",
+        "canonical": "#FFE989",
+        "tonalRamp": [
+          "#110A00",
+          "#312400",
+          "#524000",
+          "#756000",
+          "#978219",
+          "#B8A552",
+          "#D8CA8B",
+          "#F7EFCB"
+        ]
+      },
+      "foil-legendary-deep": {
+        "role": "tertiary",
+        "displayName": "Gold Leaf Deep",
+        "canonical": "#FFB800",
+        "tonalRamp": [
+          "#190500",
+          "#411800",
+          "#6A3200",
+          "#915000",
+          "#B57300",
+          "#D69800",
+          "#F1C169",
+          "#FFEABA"
+        ]
+      },
+      "foil-mythic": {
+        "role": "tertiary",
+        "displayName": "Hot Flamingo",
+        "canonical": "#FF9CC8",
+        "tonalRamp": [
+          "#1A020D",
+          "#430C29",
+          "#6D2148",
+          "#953E68",
+          "#BB5F8A",
+          "#DC86AC",
+          "#F8B1CF",
+          "#FFE1F2"
+        ]
+      },
+      "foil-mythic-deep": {
+        "role": "tertiary",
+        "displayName": "Hot Flamingo Deep",
+        "canonical": "#FF3D8B",
+        "tonalRamp": [
+          "#250008",
+          "#59001F",
+          "#8C003A",
+          "#BC0057",
+          "#E62078",
+          "#FF5F9B",
+          "#FF99C1",
+          "#FFD4E9"
+        ]
+      },
+      "foil-mint": {
+        "role": "tertiary",
+        "displayName": "Prism Mint",
+        "canonical": "#3DDC97",
+        "tonalRamp": [
+          "#001202",
+          "#00340E",
+          "#005723",
+          "#007B3E",
+          "#009E5F",
+          "#38C084",
+          "#83E0AF",
+          "#C9FDDF"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The typed amount only; drops to 34px past nine characters."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Wordmark, rank name, mystery-card title."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Stat values, annual figure, section heading, compact currency segments."
+      },
+      "body-strong": {
+        "displayName": "Body Strong",
+        "purpose": "Field label, frequency segments, share button, counts."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Tier quip, next-card line, mystery prompt (system font)."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Stat labels, frequency hint, disclaimer (system font)."
+      },
+      "badge": {
+        "displayName": "Badge",
+        "purpose": "Rarity pill text, ink on foil."
+      }
+    },
+    "shadows": [
+      {
+        "name": "foil-glow",
+        "value": "0 12px 24px rgba(<tier deep foil>, 0.35)",
+        "purpose": "Rank card and mystery card only; colour is the tier's deep foil stop (violet-shade or black for the mystery card). Android elevation 8."
+      },
+      {
+        "name": "segment-lift",
+        "value": "0 2px 6px rgba(75, 43, 184, 0.25)",
+        "purpose": "Selected segment only. Android elevation 2."
+      }
+    ],
+    "motion": [
+      {
+        "name": "tier-settle",
+        "value": "450ms",
+        "purpose": "Debounce after typing before the card adopts a new tier."
+      },
+      {
+        "name": "flip-out",
+        "value": "140ms ease-in (quad), rotateY 0 to 90deg, perspective 1200",
+        "purpose": "First half of the card flip on a tier change."
+      },
+      {
+        "name": "flip-in",
+        "value": "280ms ease-out (exponential), rotateY 90 to 0deg",
+        "purpose": "Card returns wearing the new tier's foil."
+      },
+      {
+        "name": "sheen",
+        "value": "650ms ease-out (quad), skewX -18deg, white 0 / 0.28 / 0",
+        "purpose": "One sweep across the card after the flip; skipped under Reduce Motion and for the mystery card."
+      },
+      {
+        "name": "reduce-motion",
+        "value": "opacity crossfade, same timings",
+        "purpose": "Replaces the flip; no sheen."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "content-max",
+        "value": "520px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Segmented Control (frequency)",
+      "kind": "custom",
+      "refersTo": "segmented-track",
+      "description": "One choice among a few; violet fill marks the selected option.",
+      "html": "<div class=\"ds-seg\" role=\"radiogroup\" aria-label=\"Fréquence\"><button class=\"ds-seg-opt\" role=\"radio\" aria-checked=\"false\">Jour</button><button class=\"ds-seg-opt\" role=\"radio\" aria-checked=\"false\">Semaine</button><button class=\"ds-seg-opt ds-seg-on\" role=\"radio\" aria-checked=\"true\">Mois</button></div>",
+      "css": ".ds-seg{display:flex;gap:4px;padding:3px;border:2px solid #1B1B3A;border-radius:14px;background:rgba(108,59,255,0.10);width:320px} .ds-seg-opt{flex:1;min-height:44px;border:0;border-radius:10px;background:transparent;color:#1B1B3A;font:600 15px 'Bricolage Grotesque', system-ui, sans-serif;cursor:pointer;transition:opacity .15s} .ds-seg-opt:hover{opacity:.75} .ds-seg-opt:active{opacity:.6} .ds-seg-opt:focus-visible{outline:2px solid #6C3BFF;outline-offset:2px} .ds-seg-on{background:#6C3BFF;color:#fff;box-shadow:0 2px 6px rgba(75,43,184,0.25)} .ds-seg-on:hover{opacity:1}"
+    },
+    {
+      "name": "Currency Toggle (compact)",
+      "kind": "chip",
+      "refersTo": "segmented-option-selected",
+      "description": "Compact segmented control for € / $ on the label row.",
+      "html": "<div class=\"ds-cur\" role=\"radiogroup\" aria-label=\"Devise\"><button class=\"ds-cur-opt ds-cur-on\" aria-checked=\"true\" role=\"radio\">€</button><button class=\"ds-cur-opt\" role=\"radio\" aria-checked=\"false\">$</button></div>",
+      "css": ".ds-cur{display:inline-flex;gap:4px;padding:3px;border:2px solid #1B1B3A;border-radius:14px;background:rgba(108,59,255,0.10)} .ds-cur-opt{min-width:48px;min-height:44px;padding:0 12px;border:0;border-radius:10px;background:transparent;color:#1B1B3A;font:800 20px 'Bricolage Grotesque', system-ui, sans-serif;cursor:pointer} .ds-cur-opt:hover{opacity:.75} .ds-cur-opt:focus-visible{outline:2px solid #6C3BFF;outline-offset:2px} .ds-cur-on{background:#6C3BFF;color:#fff;box-shadow:0 2px 6px rgba(75,43,184,0.25)} .ds-cur-on:hover{opacity:1}"
+    },
+    {
+      "name": "Amount Input Panel",
+      "kind": "input",
+      "refersTo": "panel",
+      "description": "White outlined panel holding the label, a big live amount field and the frequency hint.",
+      "html": "<div class=\"ds-panel\"><label class=\"ds-panel-label\" for=\"ds-amt\">Ton salaire brut</label><input id=\"ds-amt\" class=\"ds-amount\" inputmode=\"decimal\" placeholder=\"0\" value=\"2 500\"><p class=\"ds-hint\">Par mois, sur 12 mois par an</p></div>",
+      "css": ".ds-panel{width:320px;padding:16px;border:2px solid #1B1B3A;border-radius:16px;background:#fff;display:flex;flex-direction:column;gap:12px} .ds-panel-label{font:600 15px 'Bricolage Grotesque', system-ui, sans-serif;color:rgba(27,27,58,0.68)} .ds-amount{border:0;background:transparent;font:800 40px 'Bricolage Grotesque', system-ui, sans-serif;letter-spacing:-1px;font-variant-numeric:tabular-nums;color:#1B1B3A;caret-color:#6C3BFF;padding:4px 0;width:100%} .ds-amount:focus,.ds-amount:focus-visible{outline:none} .ds-amount::placeholder{color:rgba(27,27,58,0.68)} .ds-panel:focus-within{border-color:#6C3BFF} .ds-hint{margin:0;font:400 13px system-ui, -apple-system, Roboto, sans-serif;color:rgba(27,27,58,0.68)}"
+    },
+    {
+      "name": "Rank Card",
+      "kind": "card",
+      "refersTo": "rank-card",
+      "description": "Signature component: foil-framed ink card carrying the rarity, rank name, stats, emblem, quip and share action (shown at the Peu commune tier).",
+      "html": "<div class=\"ds-rank\"><div class=\"ds-rank-face\"><div class=\"ds-rank-top\"><span class=\"ds-rarity\">Peu commune</span><span class=\"ds-rank-no\">N°3/8</span></div><h3 class=\"ds-rank-name\">Le Confortable</h3><div class=\"ds-stat ds-stat-annual\"><span class=\"ds-stat-label\">Par an, brut</span><span class=\"ds-annual\">30 000 €</span></div><div class=\"ds-stats\"><div class=\"ds-stat\"><span class=\"ds-stat-label\">1 million dans</span><span class=\"ds-stat-val\">33 ans 4 mois</span></div><div class=\"ds-stat\"><span class=\"ds-stat-label\">1 milliard dans</span><span class=\"ds-stat-val\">33 333 ans</span></div></div><div class=\"ds-art-row\"><div class=\"ds-art\"><svg width=\"80\" height=\"80\" viewBox=\"0 0 120 120\" aria-hidden=\"true\"><rect x=\"22\" y=\"82\" width=\"76\" height=\"12\" fill=\"#1FB57A\"/><ellipse cx=\"60\" cy=\"94\" rx=\"38\" ry=\"10\" fill=\"#1FB57A\"/><ellipse cx=\"60\" cy=\"82\" rx=\"38\" ry=\"10\" fill=\"#7CF0BF\"/><rect x=\"22\" y=\"64\" width=\"76\" height=\"12\" fill=\"#1FB57A\"/><ellipse cx=\"60\" cy=\"76\" rx=\"38\" ry=\"10\" fill=\"#1FB57A\"/><ellipse cx=\"60\" cy=\"64\" rx=\"38\" ry=\"10\" fill=\"#7CF0BF\"/><rect x=\"22\" y=\"46\" width=\"76\" height=\"12\" fill=\"#1FB57A\"/><ellipse cx=\"60\" cy=\"58\" rx=\"38\" ry=\"10\" fill=\"#1FB57A\"/><ellipse cx=\"60\" cy=\"46\" rx=\"38\" ry=\"10\" fill=\"#7CF0BF\"/></svg></div><p class=\"ds-quip\">Le resto du samedi soir est validé.</p></div><button class=\"ds-share\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3v12\"/><path d=\"M8 7l4-4 4 4\"/><path d=\"M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1\"/></svg><span>Partager ma carte</span></button></div></div>",
+      "css": ".ds-rank{width:340px;padding:5px;border-radius:20px;background:linear-gradient(135deg, #1FB57A, #7CF0BF, #FFFFFF, #7DB6FF, #7CF0BF, #1FB57A);box-shadow:0 12px 24px rgba(31,181,122,0.35)} .ds-rank-face{border-radius:15px;background:#1B1B3A;padding:24px;color:#fff} .ds-rank-top{display:flex;justify-content:space-between;align-items:center} .ds-rarity{background:#7CF0BF;color:#1B1B3A;font:800 13px 'Bricolage Grotesque', system-ui, sans-serif;border-radius:999px;padding:4px 12px} .ds-rank-no{font:600 13px 'Bricolage Grotesque', system-ui, sans-serif;color:rgba(255,255,255,0.62);font-variant-numeric:tabular-nums} .ds-rank-name{margin:12px 0 0;font:800 28px 'Bricolage Grotesque', system-ui, sans-serif;letter-spacing:-0.6px} .ds-stats{display:flex;gap:8px;margin-top:8px} .ds-stat{flex:1;display:flex;flex-direction:column;gap:2px;border-radius:12px;background:rgba(255,255,255,0.08);padding:12px} .ds-stat-annual{flex-direction:row;justify-content:space-between;align-items:baseline;margin-top:16px;padding:12px 16px} .ds-stat-label{font:400 13px system-ui, -apple-system, Roboto, sans-serif;color:rgba(255,255,255,0.68)} .ds-annual{font:800 20px 'Bricolage Grotesque', system-ui, sans-serif;font-variant-numeric:tabular-nums} .ds-stat-val{font:800 20px/24px 'Bricolage Grotesque', system-ui, sans-serif;color:#7CF0BF;font-variant-numeric:tabular-nums} .ds-art-row{display:flex;align-items:center;gap:16px;margin-top:16px} .ds-art{width:96px;height:96px;flex:none;border-radius:14px;background:rgba(31,181,122,0.2);display:flex;align-items:center;justify-content:center} .ds-quip{margin:0;font:400 15px/21px system-ui, -apple-system, Roboto, sans-serif;color:rgba(255,255,255,0.82)} .ds-share{margin-top:16px;width:100%;min-height:44px;border-radius:12px;border:1px solid rgba(255,255,255,0.24);background:transparent;color:#fff;font:600 15px 'Bricolage Grotesque', system-ui, sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:opacity .15s} .ds-share:hover{background:rgba(255,255,255,0.06)} .ds-share:active{opacity:.7} .ds-share:focus-visible{outline:2px solid #fff;outline-offset:2px}"
+    },
+    {
+      "name": "Rarity Badge",
+      "kind": "chip",
+      "refersTo": "rarity-badge",
+      "description": "Round pill in the tier's light foil stop with ink text.",
+      "html": "<div class=\"ds-badges\"><span class=\"ds-badge\" style=\"background:#D9D4F2\">Commune</span><span class=\"ds-badge\" style=\"background:#7CF0BF\">Peu commune</span><span class=\"ds-badge\" style=\"background:#7DB6FF\">Rare</span><span class=\"ds-badge\" style=\"background:#B9A2FF\">Épique</span><span class=\"ds-badge\" style=\"background:#FFE989\">Légendaire</span><span class=\"ds-badge\" style=\"background:#FF9CC8\">Mythique</span></div>",
+      "css": ".ds-badges{display:flex;flex-wrap:wrap;gap:8px;padding:16px;background:#1B1B3A;border-radius:15px;width:320px} .ds-badge{font:800 13px 'Bricolage Grotesque', system-ui, sans-serif;color:#1B1B3A;border-radius:999px;padding:4px 12px}"
+    },
+    {
+      "name": "Collection Strip",
+      "kind": "custom",
+      "refersTo": "collection-mini",
+      "description": "Outlined panel with eight mini cards: owned in foil, current raised, locked dashed.",
+      "html": "<div class=\"ds-coll\"><div class=\"ds-coll-head\"><span class=\"ds-coll-title\">Ta collection</span><span class=\"ds-coll-count\">3/8</span></div><div class=\"ds-coll-row\"><div class=\"ds-mini ds-own\" style=\"background:linear-gradient(135deg,#A69FD1,#D9D4F2,#FFFFFF,#D9D4F2,#D9D4F2,#A69FD1)\"><div class=\"ds-mini-face\"></div></div><div class=\"ds-mini ds-own\" style=\"background:linear-gradient(135deg,#A69FD1,#D9D4F2,#FFFFFF,#7CF0BF,#D9D4F2,#A69FD1)\"><div class=\"ds-mini-face\"></div></div><div class=\"ds-mini ds-own ds-cur-mini\" style=\"background:linear-gradient(135deg, #1FB57A, #7CF0BF, #FFFFFF, #7DB6FF, #7CF0BF, #1FB57A)\"><div class=\"ds-mini-face\"></div></div><div class=\"ds-mini ds-locked\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"rgba(27,27,58,0.68)\" aria-hidden=\"true\"><rect x=\"5\" y=\"10\" width=\"14\" height=\"11\" rx=\"2\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\" fill=\"none\" stroke=\"rgba(27,27,58,0.68)\" stroke-width=\"2.5\"/></svg></div><div class=\"ds-mini ds-locked\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"rgba(27,27,58,0.68)\" aria-hidden=\"true\"><rect x=\"5\" y=\"10\" width=\"14\" height=\"11\" rx=\"2\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\" fill=\"none\" stroke=\"rgba(27,27,58,0.68)\" stroke-width=\"2.5\"/></svg></div><div class=\"ds-mini ds-locked\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"rgba(27,27,58,0.68)\" aria-hidden=\"true\"><rect x=\"5\" y=\"10\" width=\"14\" height=\"11\" rx=\"2\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\" fill=\"none\" stroke=\"rgba(27,27,58,0.68)\" stroke-width=\"2.5\"/></svg></div><div class=\"ds-mini ds-locked\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"rgba(27,27,58,0.68)\" aria-hidden=\"true\"><rect x=\"5\" y=\"10\" width=\"14\" height=\"11\" rx=\"2\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\" fill=\"none\" stroke=\"rgba(27,27,58,0.68)\" stroke-width=\"2.5\"/></svg></div><div class=\"ds-mini ds-locked\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"rgba(27,27,58,0.68)\" aria-hidden=\"true\"><rect x=\"5\" y=\"10\" width=\"14\" height=\"11\" rx=\"2\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\" fill=\"none\" stroke=\"rgba(27,27,58,0.68)\" stroke-width=\"2.5\"/></svg></div></div><p class=\"ds-coll-next\">Prochaine carte : Le Gros Poisson, dès 60 000 € par an.</p></div>",
+      "css": ".ds-coll{width:320px;padding:16px;border:2px solid #1B1B3A;border-radius:16px;background:#fff} .ds-coll-head{display:flex;justify-content:space-between;align-items:baseline} .ds-coll-title{font:800 20px 'Bricolage Grotesque', system-ui, sans-serif;color:#1B1B3A} .ds-coll-count{font:600 15px 'Bricolage Grotesque', system-ui, sans-serif;color:rgba(27,27,58,0.68);font-variant-numeric:tabular-nums} .ds-coll-row{display:flex;gap:6px;margin-top:12px} .ds-mini{flex:1;aspect-ratio:0.72;border-radius:6px;box-sizing:border-box} .ds-own{border:2px solid #1B1B3A;padding:3px;display:flex} .ds-mini-face{flex:1;border-radius:3px;background:#1B1B3A} .ds-cur-mini{border-width:3px;transform:translateY(-4px)} .ds-locked{border:2px dashed #1B1B3A;display:flex;align-items:center;justify-content:center} .ds-coll-next{margin:12px 0 0;font:400 15px/21px system-ui, -apple-system, Roboto, sans-serif;color:rgba(27,27,58,0.68)}"
+    },
+    {
+      "name": "Mystery Card",
+      "kind": "card",
+      "refersTo": "rank-card",
+      "description": "Empty state: the card lies face down in the brand foil until a salary is typed.",
+      "html": "<div class=\"ds-myst\"><div class=\"ds-myst-face\"><div class=\"ds-myst-logo\"></div><h3 class=\"ds-myst-title\">Carte mystère</h3><p class=\"ds-myst-text\">Entre ton salaire pour révéler ta carte et ton rang.</p></div></div>",
+      "css": ".ds-myst{width:340px;padding:5px;border-radius:20px;background:linear-gradient(135deg,#FF5FA2,#6C3BFF,#FFD23F);box-shadow:0 12px 24px rgba(75,43,184,0.35)} .ds-myst-face{border-radius:15px;background:#1B1B3A;padding:48px 24px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center} .ds-myst-logo{width:56px;height:76px;border-radius:8px;background:#1B1B3A;border:3px solid #FFD23F;box-shadow:6px 2px 0 -1px #FF5FA2;transform:rotate(-6deg)} .ds-myst-title{margin:8px 0 0;font:800 28px 'Bricolage Grotesque', system-ui, sans-serif;color:#fff} .ds-myst-text{margin:0;max-width:240px;font:400 15px/21px system-ui, -apple-system, Roboto, sans-serif;color:rgba(255,255,255,0.8)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Pocket Binder",
+    "overview": "RichRank is a trading-card binder that happens to do arithmetic. The salary you type is not shown as a result row; it is dealt to you as a collectible card with a rarity, a name, a quip and three stats, and the rest of the screen is the binder page around it: a lavender ground, chunky white panels with thick ink outlines, and a row of mini cards waiting to be collected. The register is a toy, bright and friendly, never a finance dashboard.\n\nThe density is low and the hierarchy is blunt. One big tabular number at the top (the amount you type), one dark card in the middle that carries every result, one collection strip below. Everything outside the card is flat, white and outlined in ink; the card alone is dark, foiled and glowing, so the eye always lands on it. Colour is spent on rarity: the controls get one tint (electric violet), and every other hue on the screen belongs to a tier foil.\n\nMotion is a single event, not a texture. Numbers update live while you type; the card only flips (one Y rotation) and a single sheen sweeps across it when the settled tier changes. Within a tier nothing moves but the digits. Reduce Motion swaps the flip for a crossfade and drops the sheen. Light is the default scene (daytime phone use); dark mirrors it for night.",
+    "keyCharacteristics": [
+      "Lavender-paper ground, white card-stock panels, deep-ink 2px outlines.",
+      "One control tint: electric violet (violet glow in dark mode).",
+      "The rank card is the only dark, foiled, glowing object on the screen.",
+      "One display face with character (Bricolage Grotesque, 800 and 600) for numbers, names and controls; the system font for small reading text.",
+      "Tabular figures on every number.",
+      "The flip and the sheen fire only on a tier change."
+    ],
+    "rules": [
+      {
+        "name": "The One Tint Rule",
+        "body": "Electric violet is the only colour that means \"you can act on this\". Pink, sunflower and every foil hue belong to cards and rarity; they never mark a control.",
+        "section": "colors"
+      },
+      {
+        "name": "The Foil Owns the Hue Rule",
+        "body": "On the rank card, every accent (badge, stat values, art wash, glow) comes from the current tier's foil. Changing tier changes all of them at once; no accent on the card is fixed.",
+        "section": "colors"
+      },
+      {
+        "name": "The Five Sizes Rule",
+        "body": "The scale is 40 / 28 / 20 / 15 / 13 and nothing else. A new element takes one of those five sizes.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Money Rule",
+        "body": "Every number that can change (amount, annual, years, counts, card number) uses tabular figures so digits do not jitter while typing.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ink, Not Shadow Rule",
+        "body": "Every container except the rank card is separated by a 2px outline (deep ink in light mode). Do not add drop shadows to panels.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Only Foil Rule",
+        "body": "The holographic foil frame belongs to the rank card (and, in miniature, to owned collection cards). No panel, button or header ever wears a gradient frame.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep electric violet (violet glow in dark mode) as the single control tint: selected segments, caret, keyboard action.",
+      "**Do** separate panels from the ground with a 2px deep-ink outline at 16px radius.",
+      "**Do** take every rank-card accent from the current tier's foil pair.",
+      "**Do** set every changing number in Bricolage Grotesque with tabular figures.",
+      "**Do** fire the flip and the single sheen only when the settled tier changes, and crossfade instead under Reduce Motion.",
+      "**Do** keep the gross-estimate disclaimer directly under the card, in Label size and ink-soft."
+    ],
+    "donts": [
+      "**Don't** give any element other than the rank card (and owned mini cards) a foil gradient frame or a glow.",
+      "**Don't** add drop shadows to panels, the collection or the header; depth outside the card comes from ink outlines.",
+      "**Don't** use pink, sunflower or a foil hue to mark an interactive control.",
+      "**Don't** animate the card while the tier stays the same; within a tier only the digits change.",
+      "**Don't** introduce sizes outside 40 / 28 / 20 / 15 / 13.",
+      "**Don't** set soft text below 68% ink opacity (70% lavender in dark mode)."
+    ]
+  }
+}

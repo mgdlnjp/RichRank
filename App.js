@@ -1,273 +1,244 @@
-import React, { useState, useRef } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
-  SafeAreaView,
-  View,
+  InputAccessoryView,
+  Keyboard,
+  Platform,
+  Pressable,
+  ScrollView,
+  Share,
+  StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  Animated,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
+  View,
+  useColorScheme,
 } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-context";
+import * as Haptics from "expo-haptics";
+import * as SplashScreen from "expo-splash-screen";
+import {
+  useFonts,
+  BricolageGrotesque_600SemiBold,
+  BricolageGrotesque_800ExtraBold,
+} from "@expo-google-fonts/bricolage-grotesque";
 
-const FREQUENCIES = [
-  // { label: 'Horaire', value: 'hourly', factor: 2080 }, // Retiré
-  { label: "Journalier", value: "daily", factor: 260 }, // 5j * 52 semaines
-  { label: "Hebdomadaire", value: "weekly", factor: 52 },
-  { label: "Mensuel", value: "monthly", factor: 12 },
-];
+import Logo from "./src/components/Logo";
+import Segmented from "./src/components/Segmented";
+import RankCard from "./src/components/RankCard";
+import Collection from "./src/components/Collection";
+import { CURRENCIES, FREQUENCIES, TIERS, tierIndexFor } from "./src/ranks";
+import { displayAmount, formatDuration, formatMoneyCompact, parseAmount, sanitizeAmount } from "./src/format";
+import { font, getTheme, size, space } from "./src/theme";
 
-const DOLLAR = { symbol: "$", millionaire: 10000000, billionaire: 1000000000 };
+SplashScreen.preventAutoHideAsync().catch(() => {});
+
+// The card identity waits for a short pause in typing, so it does not flip on every digit.
+const SETTLE_MS = 450;
+const KEYBOARD_BAR = "amountKeyboardBar";
+
+const haptic = (kind) => {
+  if (Platform.OS === "web") return;
+  (kind === "up"
+    ? Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success)
+    : Haptics.selectionAsync()
+  ).catch(() => {});
+};
 
 export default function App() {
-  const [salary, setSalary] = useState("");
+  const [fontsLoaded] = useFonts({ BricolageGrotesque_600SemiBold, BricolageGrotesque_800ExtraBold });
+
+  useEffect(() => {
+    if (fontsLoaded) SplashScreen.hideAsync().catch(() => {});
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) return null;
+  return (
+    <SafeAreaProvider>
+      <RichRank />
+    </SafeAreaProvider>
+  );
+}
+
+function RichRank() {
+  const theme = getTheme(useColorScheme());
+  const insets = useSafeAreaInsets();
+
+  const [raw, setRaw] = useState("");
   const [frequency, setFrequency] = useState("monthly");
-  const [result, setResult] = useState(null);
-  const [fadeAnim] = useState(new Animated.Value(0));
-  const salaryInputRef = useRef(null);
+  const [currency, setCurrency] = useState("EUR");
 
-  const handleCalculate = () => {
-    // Forcer le focus sur le champ salaire
-    if (salaryInputRef.current) {
-      salaryInputRef.current.focus();
-    }
+  const freq = FREQUENCIES.find((f) => f.value === frequency);
+  const symbol = CURRENCIES.find((c) => c.value === currency).symbol;
+  const amount = parseAmount(raw);
+  const annual = amount * freq.factor;
+  const liveTier = amount > 0 ? tierIndexFor(annual) : null;
 
-    const freq = FREQUENCIES.find((f) => f.value === frequency);
-    const annual = parseFloat(salary || 0) * freq.factor;
+  // Settled tier drives the card flip; numbers update live.
+  const [tier, setTier] = useState(null);
+  const lastTier = useRef(null);
+  useEffect(() => {
+    const t = setTimeout(() => setTier(liveTier), SETTLE_MS);
+    return () => clearTimeout(t);
+  }, [liveTier]);
+  useEffect(() => {
+    if (tier !== null && lastTier.current !== null && tier > lastTier.current) haptic("up");
+    lastTier.current = tier;
+  }, [tier]);
 
-    let status = "";
-    if (annual >= DOLLAR.billionaire) {
-      status = "Milliardaire 💎";
-    } else if (annual >= DOLLAR.millionaire) {
-      status = "Millionnaire 🤑";
-    } else {
-      status = "Pas encore millionnaire 😅";
-    }
+  const stats = useMemo(
+    () => ({
+      annualLabel: formatMoneyCompact(annual, symbol),
+      millionLabel: formatDuration(1e6, annual),
+      billionLabel: formatDuration(1e9, annual),
+    }),
+    [annual, symbol]
+  );
 
-    setResult({
-      annual,
-      status,
-      symbol: DOLLAR.symbol,
-    });
-
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 800,
-      useNativeDriver: true,
-    }).start();
+  const share = () => {
+    if (tier === null) return;
+    const t = TIERS[tier];
+    Share.share({
+      message:
+        `Sur RichRank je suis « ${t.name} » (carte ${t.rarity.toLowerCase()}). ` +
+        (annual >= 1e6
+          ? `Je gagne déjà ${stats.annualLabel} par an. Et toi ?`
+          : `Au rythme actuel, mon premier million arrive dans ${stats.millionLabel}. Et toi ?`),
+    }).catch(() => {});
   };
 
+  const select = (setter) => (value) => {
+    haptic("select");
+    setter(value);
+  };
+
+  // When the keyboard opens, scroll so the amount field sits at the top and the card's
+  // name and stats stay visible above the keyboard while the user types.
+  const scroller = useRef(null);
+  const panelY = useRef(0);
+  const inputY = useRef(0);
+  useEffect(() => {
+    const sub = Keyboard.addListener(Platform.OS === "ios" ? "keyboardWillShow" : "keyboardDidShow", () => {
+      scroller.current?.scrollTo({ y: Math.max(0, panelY.current + inputY.current - space.lg), animated: true });
+    });
+    return () => sub.remove();
+  }, []);
+
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
+    <View style={[styles.screen, { backgroundColor: theme.bg }]}>
+      <StatusBar style={theme.statusBar} />
+      <ScrollView
+        ref={scroller}
+        contentContainerStyle={[
+          styles.content,
+          { paddingTop: insets.top + space.lg, paddingBottom: insets.bottom + space.xxl },
+        ]}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
       >
-        <ScrollView
-          contentContainerStyle={styles.scrollContent}
-          keyboardShouldPersistTaps="handled"
+        <View style={styles.header} accessibilityRole="header">
+          <Logo size={36} />
+          <Text style={[styles.brand, { color: theme.text }]}>RichRank</Text>
+        </View>
+
+        <View
+          onLayout={(e) => (panelY.current = e.nativeEvent.layout.y)}
+          style={[styles.panel, { backgroundColor: theme.surface, borderColor: theme.outline }]}
         >
-          <View style={styles.contentContainer}>
-            <View style={styles.iconContainer}>
-              <Text style={styles.crownIcon}>👑</Text>
-            </View>
-            <Text style={styles.title}>Rich Rank</Text>
-
-            <View style={styles.inputGroup}>
-              <Text style={styles.labelCentered}>Fréquence</Text>
-              <View style={styles.rowCentered}>
-                {FREQUENCIES.map((f) => (
-                  <TouchableOpacity
-                    key={f.value}
-                    style={[
-                      styles.chip,
-                      frequency === f.value && styles.chipSelected,
-                    ]}
-                    onPress={() => setFrequency(f.value)}
-                  >
-                    <Text
-                      style={
-                        frequency === f.value
-                          ? styles.chipTextSelected
-                          : styles.chipText
-                      }
-                    >
-                      {f.label}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            </View>
-
-            <View style={styles.inputGroup}>
-              <Text style={styles.labelCentered}>Ton salaire</Text>
-              <TextInput
-                ref={salaryInputRef}
-                style={styles.input}
-                keyboardType="numeric"
-                placeholder="Montant"
-                value={salary}
-                onChangeText={setSalary}
-                placeholderTextColor="#888"
-                returnKeyType="done"
-              />
-            </View>
-
-            <TouchableOpacity style={styles.button} onPress={handleCalculate}>
-              <Text style={styles.buttonText}>Calculer</Text>
-            </TouchableOpacity>
-
-            {result && (
-              <Animated.View
-                style={[styles.resultContainer, { opacity: fadeAnim }]}
-              >
-                <Text style={styles.resultTitle}>{result.status}</Text>
-                <Text style={styles.resultTitle}>Revenu annuel estimé</Text>
-                <Text style={styles.resultTitle}>
-                  {result.annual.toLocaleString()} {result.symbol}
-                </Text>
-              </Animated.View>
-            )}
-          </View>
-          <View style={styles.footerContainer}>
-            <Text style={styles.footer}>
-              © 2024 - Calcul basé sur des estimations standards
+          <View style={styles.labelRow}>
+            <Text style={[styles.label, { color: theme.textSoft }]} nativeID="salaryLabel">
+              Ton salaire brut
             </Text>
+            <Segmented
+              compact
+              label="Devise"
+              options={CURRENCIES.map((c) => ({ ...c, a11y: c.value === "EUR" ? "Euros" : "Dollars" }))}
+              value={currency}
+              onChange={select(setCurrency)}
+              theme={theme}
+            />
           </View>
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+            <TextInput
+              onLayout={(e) => (inputY.current = e.nativeEvent.layout.y)}
+              value={displayAmount(raw)}
+              onChangeText={(t) => setRaw(sanitizeAmount(t))}
+              placeholder="0"
+              placeholderTextColor={theme.placeholder}
+              keyboardType="decimal-pad"
+              inputAccessoryViewID={Platform.OS === "ios" ? KEYBOARD_BAR : undefined}
+              selectionColor={theme.tint}
+              accessibilityLabel={`Ton salaire brut, ${freq.label.toLowerCase()}`}
+              accessibilityLabelledBy="salaryLabel"
+              maxFontSizeMultiplier={1.3}
+              style={[
+                styles.amount,
+                { color: theme.text },
+                raw.length > 9 ? { fontSize: 34 } : null,
+              ]}
+            />
+          <Segmented
+            label="Fréquence"
+            options={FREQUENCIES}
+            value={frequency}
+            onChange={select(setFrequency)}
+            theme={theme}
+          />
+          <Text style={[styles.hint, { color: theme.textSoft }]}>{freq.hint}</Text>
+        </View>
+
+        <View style={styles.cardSlot}>
+          <RankCard tierIndex={tier} stats={stats} onShare={share} theme={theme} />
+          <Text style={[styles.disclaimer, { color: theme.textSoft }]}>
+            Estimation pour rire : revenu brut, sans impôts, sans dépenses, sans épargne ni placements.
+          </Text>
+        </View>
+
+        <Collection tierIndex={tier} symbol={symbol} theme={theme} />
+      </ScrollView>
+
+      {Platform.OS === "ios" && (
+        <InputAccessoryView nativeID={KEYBOARD_BAR}>
+          <View style={[styles.keyboardBar, { backgroundColor: theme.surface, borderTopColor: theme.line }]}>
+            <Pressable
+              onPress={Keyboard.dismiss}
+              accessibilityRole="button"
+              accessibilityLabel="Fermer le clavier"
+              style={({ pressed }) => [styles.keyboardDone, pressed && { opacity: 0.6 }]}
+            >
+              <Text style={[styles.keyboardDoneText, { color: theme.tint }]}>OK</Text>
+            </Pressable>
+          </View>
+        </InputAccessoryView>
+      )}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#181A20",
-  },
-  scrollContent: {
-    flexGrow: 1,
-    justifyContent: "center",
-  },
-  contentContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 20,
-    paddingTop: 30,
-    paddingBottom: 30,
-  },
-  iconContainer: {
-    alignItems: "center",
-    marginBottom: 8,
-  },
-  crownIcon: {
-    fontSize: 48,
-    marginBottom: 2,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: "bold",
-    color: "#FFD700",
-    marginBottom: 30,
-    textAlign: "center",
-    letterSpacing: 1,
-  },
-  inputGroup: {
-    width: "100%",
-    marginBottom: 18,
-    alignItems: "center",
-  },
-  labelCentered: {
-    color: "#fff",
-    fontSize: 16,
-    marginBottom: 6,
-    textAlign: "center",
-    alignSelf: "center",
-  },
-  input: {
-    backgroundColor: "#23262F",
-    color: "#fff",
-    borderRadius: 8,
-    padding: 12,
-    fontSize: 18,
-    borderWidth: 1,
-    borderColor: "#FFD700",
-    width: 220,
-    textAlign: "center",
-  },
-  rowCentered: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 8,
-    justifyContent: "center",
-  },
-  chip: {
-    backgroundColor: "#23262F",
+  screen: { flex: 1 },
+  content: { paddingHorizontal: space.lg, width: "100%", maxWidth: 520, alignSelf: "center" },
+  header: { flexDirection: "row", alignItems: "center", gap: space.sm, marginBottom: space.xl },
+  brand: { fontFamily: font.display, fontSize: size.title, letterSpacing: -0.6 },
+  panel: {
     borderRadius: 16,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    marginRight: 8,
-    marginBottom: 8,
-    borderWidth: 1,
-    borderColor: "#FFD700",
-  },
-  chipSelected: {
-    backgroundColor: "#FFD700",
-  },
-  chipText: {
-    color: "#FFD700",
-    fontWeight: "500",
-  },
-  chipTextSelected: {
-    color: "#23262F",
-    fontWeight: "bold",
-  },
-  button: {
-    backgroundColor: "#FFD700",
-    borderRadius: 12,
-    paddingVertical: 14,
-    paddingHorizontal: 40,
-    marginTop: 18,
-    marginBottom: 20,
-  },
-  buttonText: {
-    color: "#23262F",
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  resultContainer: {
-    backgroundColor: "#23262F",
-    borderRadius: 16,
-    padding: 24,
-    marginTop: 18,
-    alignItems: "center",
+    padding: space.lg,
+    gap: space.md,
     borderWidth: 2,
-    borderColor: "#FFD700",
   },
-  resultTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#FFD700",
-    marginBottom: 10,
-    textAlign: "center", // Ajouté pour centrage
-  },
-  resultText: {
-    color: "#fff",
-    fontSize: 18,
-    textAlign: "center", // Ajouté pour centrage
-  },
-  footerContainer: {
-    alignItems: "center",
-    marginTop: 30,
-    marginBottom: 10,
-  },
-  footer: {
-    color: "#888",
-    fontSize: 12,
-    textAlign: "center",
+  label: { fontFamily: font.strong, fontSize: size.body },
+  labelRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: space.md },
+  amount: {
     width: "100%",
+    fontFamily: font.display,
+    fontSize: size.display,
+    letterSpacing: -1,
+    paddingVertical: space.xs,
+    fontVariant: ["tabular-nums"],
+    ...(Platform.OS === "web" ? { outlineStyle: "none" } : null),
   },
+  hint: { fontSize: size.caption },
+  cardSlot: { marginTop: space.xxl, marginBottom: space.xxl },
+  keyboardBar: { flexDirection: "row", justifyContent: "flex-end", borderTopWidth: StyleSheet.hairlineWidth, paddingHorizontal: space.sm },
+  keyboardDone: { minHeight: 44, minWidth: 64, alignItems: "center", justifyContent: "center" },
+  keyboardDoneText: { fontFamily: font.strong, fontSize: 17 },
+  disclaimer: { marginTop: space.md, fontSize: size.caption, lineHeight: 18, textAlign: "center" },
 });
